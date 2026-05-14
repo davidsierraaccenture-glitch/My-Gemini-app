@@ -1,0 +1,6 @@
+{
+  "name": "My Gemini App",
+  "description": "A powerful application integrated with Firebase and Gemini AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
