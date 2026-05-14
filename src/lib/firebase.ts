@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore, doc, getDocFromServer } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 import firebaseConfig from '../../firebase-applet-config.json';
 
 const config = {
@@ -17,6 +18,7 @@ const firestoreDatabaseId = process.env.FIREBASE_FIRESTORE_DATABASE_ID || fireba
 const app = initializeApp(config);
 export const db = getFirestore(app, firestoreDatabaseId);
 export const auth = getAuth(app);
+export const storage = getStorage(app);
 
 // Connectivity check as per guidelines
 async function testConnection() {

@@ -14,45 +14,60 @@
       },
       "required": ["uid", "email", "createdAt"]
     },
-    "Chat": {
-      "title": "Chat",
-      "description": "Represents a conversation session.",
+    "Product": {
+      "title": "Product",
+      "description": "An electronic item for sale.",
       "type": "object",
       "properties": {
-        "id": { "type": "string" },
-        "userId": { "type": "string" },
-        "title": { "type": "string" },
-        "createdAt": { "type": "string", "format": "date-time" },
-        "updatedAt": { "type": "string", "format": "date-time" }
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "categoryId": { "type": "string" },
+        "imageUrl": { "type": "string", "description": "Storage download URL." },
+        "stock": { "type": "integer" },
+        "featured": { "type": "boolean" }
       },
-      "required": ["userId", "title", "createdAt", "updatedAt"]
+      "required": ["name", "price", "categoryId", "stock"]
     },
-    "Message": {
-      "title": "Message",
-      "description": "Represents a single message within a chat.",
+    "Category": {
+      "title": "Category",
+      "description": "A group of related products.",
       "type": "object",
       "properties": {
-        "id": { "type": "string" },
-        "chatId": { "type": "string" },
-        "role": { "type": "string", "enum": ["user", "model"] },
-        "content": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" }
+      },
+      "required": ["name", "slug"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A completed purchase.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "completed", "cancelled"] },
         "createdAt": { "type": "string", "format": "date-time" }
       },
-      "required": ["chatId", "role", "content", "createdAt"]
+      "required": ["userId", "total", "status", "createdAt"]
     }
   },
   "firestore": {
     "users/{userId}": {
       "schema": "User",
-      "description": "Collection of user profiles."
+      "description": "Public user profiles."
     },
-    "chats/{chatId}": {
-      "schema": "Chat",
-      "description": "Collection of chat sessions."
+    "products/{productId}": {
+      "schema": "Product",
+      "description": "Global product catalog."
     },
-    "chats/{chatId}/messages/{messageId}": {
-      "schema": "Message",
-      "description": "Sub-collection of messages for a chat."
+    "categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Product category definitions."
+    },
+    "orders/{orderId}": {
+      "schema": "Order",
+      "description": "User purchase history."
     }
   }
 }
