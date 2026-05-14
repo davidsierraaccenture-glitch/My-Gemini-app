@@ -1,11 +1,16 @@
 runtime: nodejs20
+runConfig:
+  minInstances: 0
+  maxInstances: 2
+  cpu: 1
+  memoryMiB: 1024
 env:
   - variable: FIREBASE_PROJECT_ID
     value: "project-e1f96bfd-5dcd-4fcd-bba"
   - variable: FIREBASE_APP_ID
-    secret: "FIREBASE_APP_ID"
+    value: "1:1052258849685:web:f56f002aca7a204a9cdc9c"
   - variable: FIREBASE_API_KEY
-    secret: "FIREBASE_API_KEY"
+    value: "AIzaSyB6LVY8KjV1DQh9pCa8PoOLJKxmVxqpZxY"
   - variable: FIREBASE_AUTH_DOMAIN
     value: "project-e1f96bfd-5dcd-4fcd-bba.firebaseapp.com"
   - variable: FIREBASE_FIRESTORE_DATABASE_ID
@@ -13,4 +18,4 @@ env:
   - variable: FIREBASE_STORAGE_BUCKET
     value: "project-e1f96bfd-5dcd-4fcd-bba.firebasestorage.app"
   - variable: FIREBASE_MESSAGING_SENDER_ID
-    secret: "FIREBASE_MESSAGING_SENDER_ID"
+    value: "1052258849685"
